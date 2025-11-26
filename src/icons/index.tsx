@@ -58,6 +58,7 @@ import AccountingIcon from "./accounting.svg";
 import SalesIcon from "./sales.svg";
 import CRMIcon from "./crm.svg";
 import AdminIcon from "./admin.svg";
+import BrainIcon from "./brain.svg";
 
 export {
   DownloadIcon,
@@ -120,4 +121,5 @@ export {
   SalesIcon,
   CRMIcon,
   AdminIcon,
+  BrainIcon,
 };
