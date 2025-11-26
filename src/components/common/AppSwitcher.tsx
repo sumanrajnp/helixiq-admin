@@ -14,7 +14,8 @@ import {
   ChevronDownIcon,
   BoxCubeIcon,
   BrainIcon,
-  PieChartIcon 
+  PieChartIcon,
+  PlugInIcon 
 } from "@/icons";
 
 interface App {
@@ -127,6 +128,14 @@ const apps: App[] = [
       { name: "Analytics", path: "/insights/analytics" },
       { name: "Reports", path: "/insights/reports" },
     ],
+  },
+  {
+    id: "utils",
+    name: "Utils",
+    icon: <PlugInIcon />,
+    description: "Utility tools and components",
+    color: "bg-gray-500",
+    path: "/utils",
   },
   {
     id: "ai",

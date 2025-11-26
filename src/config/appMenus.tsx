@@ -40,7 +40,19 @@ export const defaultMenuItems: NavItem[] = [
   },
 ];
 
-export const defaultOthersItems: NavItem[] = [
+// Utils menu items (all utility modules)
+export const utilsMenuItems: NavItem[] = [
+  {
+    icon: <GridIcon />,
+    name: "Dashboard",
+    subItems: [
+      { name: "Ecommerce", path: "/", pro: false },
+      { name: "WMS", path: "/wms", pro: false },
+    ],
+  },
+];
+
+export const utilsOthersItems: NavItem[] = [
   {
     icon: <CalenderIcon />,
     name: "Calendar",
@@ -98,6 +110,9 @@ export const defaultOthersItems: NavItem[] = [
     ],
   },
 ];
+
+// Empty others items for default (utils moved to separate app)
+export const defaultOthersItems: NavItem[] = [];
 
 // Inventory menu
 export const inventoryMenuItems: NavItem[] = [
@@ -307,6 +322,8 @@ export const getMenuItems = (currentApp: string | null): { navItems: NavItem[], 
       return { navItems: warehouseMenuItems, othersItems: warehouseOthersItems };
     case 'hr':
       return { navItems: hrMenuItems, othersItems: [] };
+    case 'utils':
+      return { navItems: utilsMenuItems, othersItems: utilsOthersItems };
     default:
       return { navItems: defaultMenuItems, othersItems: defaultOthersItems };
   }
