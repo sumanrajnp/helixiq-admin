@@ -330,7 +330,8 @@ const AppSidebar: React.FC = () => {
                   }`}
                 >
                   {isExpanded || isHovered || isMobileOpen ? (
-                    currentApp === 'warehouse' ? "Barcode & RFID" : "Others"
+                    currentApp === 'warehouse' ? "Barcode & RFID" : 
+                    (currentApp === 'insights' || currentApp === null) ? "APPS" : "Others"
                   ) : (
                     <HorizontaLDots />
                   )}

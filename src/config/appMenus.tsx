@@ -19,6 +19,8 @@ import {
   SalesIcon,
   CRMIcon,
   AdminIcon,
+  BoxIcon,
+  BrainIcon,
 } from "@/icons";
 
 export type NavItem = {
@@ -35,7 +37,7 @@ export const defaultMenuItems: NavItem[] = [
     name: "Dashboard",
     subItems: [
       { name: "Ecommerce", path: "/", pro: false },
-      { name: "WMS", path: "/wms", pro: false },
+      { name: "Warehouse Insights", path: "/wms", pro: false },
     ],
   },
 ];
@@ -47,7 +49,7 @@ export const utilsMenuItems: NavItem[] = [
     name: "Dashboard",
     subItems: [
       { name: "Ecommerce", path: "/", pro: false },
-      { name: "WMS", path: "/wms", pro: false },
+      { name: "Warehouse Insights", path: "/wms", pro: false },
     ],
   },
 ];
@@ -111,8 +113,79 @@ export const utilsOthersItems: NavItem[] = [
   },
 ];
 
-// Empty others items for default (utils moved to separate app)
-export const defaultOthersItems: NavItem[] = [];
+// Default others items (all app modules)
+export const defaultOthersItems: NavItem[] = [
+  {
+    icon: <GridIcon />,
+    name: "Inventory",
+    path: "/inventory-dashboard",
+  },
+  {
+    icon: <BoxIcon />,
+    name: "Warehouse",
+    path: "/warehouse-dashboard",
+  },
+  {
+    icon: <HRIcon />,
+    name: "HR",
+    subItems: [
+      { name: "Employees", path: "/hr/employees", pro: false },
+      { name: "Payroll", path: "/hr/payroll", pro: false },
+      { name: "Attendance", path: "/hr/attendance", pro: false },
+    ],
+  },
+  {
+    icon: <AdminIcon />,
+    name: "Admin",
+    subItems: [
+      { name: "User Management", path: "/admin/users", pro: false },
+      { name: "System Settings", path: "/admin/settings", pro: false },
+      { name: "Audit Logs", path: "/admin/audit", pro: false },
+    ],
+  },
+  {
+    icon: <AccountingIcon />,
+    name: "Accounting",
+    subItems: [
+      { name: "Invoicing", path: "/accounting/invoices", pro: false },
+      { name: "Expenses", path: "/accounting/expenses", pro: false },
+      { name: "Financial Reports", path: "/accounting/reports", pro: false },
+    ],
+  },
+  {
+    icon: <SalesIcon />,
+    name: "Sales",
+    subItems: [
+      { name: "Sales Orders", path: "/sales/orders", pro: false },
+      { name: "Customers", path: "/sales/customers", pro: false },
+      { name: "Sales Reports", path: "/sales/reports", pro: false },
+    ],
+  },
+  {
+    icon: <CRMIcon />,
+    name: "CRM",
+    subItems: [
+      { name: "Leads", path: "/crm/leads", pro: false },
+      { name: "Opportunities", path: "/crm/opportunities", pro: false },
+      { name: "Contacts", path: "/crm/contacts", pro: false },
+    ],
+  },
+  {
+    icon: <PieChartIcon />,
+    name: "Insights",
+    path: "/insights",
+  },
+  {
+    icon: <PlugInIcon />,
+    name: "Utils",
+    path: "/utils",
+  },
+  {
+    icon: <BrainIcon />,
+    name: "AI",
+    path: "/ai",
+  },
+];
 
 // Inventory menu
 export const inventoryMenuItems: NavItem[] = [
@@ -313,6 +386,81 @@ export const hrMenuItems: NavItem[] = [
   },
 ];
 
+// Insights menu items (all app modules)
+export const insightsMenuItems: NavItem[] = [
+  {
+    icon: <GridIcon />,
+    name: "Dashboard",
+    subItems: [
+      { name: "Ecommerce", path: "/", pro: false },
+      { name: "Warehouse Insights", path: "/wms", pro: false },
+    ],
+  },
+];
+
+export const insightsOthersItems: NavItem[] = [
+  {
+    icon: <GridIcon />,
+    name: "Inventory",
+    path: "/inventory-dashboard",
+  },
+  {
+    icon: <BoxIcon />,
+    name: "Warehouse",
+    path: "/warehouse-dashboard",
+  },
+  {
+    icon: <HRIcon />,
+    name: "HR",
+    subItems: [
+      { name: "Employees", path: "/hr/employees", pro: false },
+      { name: "Payroll", path: "/hr/payroll", pro: false },
+      { name: "Attendance", path: "/hr/attendance", pro: false },
+    ],
+  },
+  {
+    icon: <AdminIcon />,
+    name: "Admin",
+    subItems: [
+      { name: "User Management", path: "/admin/users", pro: false },
+      { name: "System Settings", path: "/admin/settings", pro: false },
+      { name: "Audit Logs", path: "/admin/audit", pro: false },
+    ],
+  },
+  {
+    icon: <AccountingIcon />,
+    name: "Accounting",
+    subItems: [
+      { name: "Invoicing", path: "/accounting/invoices", pro: false },
+      { name: "Expenses", path: "/accounting/expenses", pro: false },
+      { name: "Financial Reports", path: "/accounting/reports", pro: false },
+    ],
+  },
+  {
+    icon: <SalesIcon />,
+    name: "Sales",
+    subItems: [
+      { name: "Sales Orders", path: "/sales/orders", pro: false },
+      { name: "Customers", path: "/sales/customers", pro: false },
+      { name: "Sales Reports", path: "/sales/reports", pro: false },
+    ],
+  },
+  {
+    icon: <CRMIcon />,
+    name: "CRM",
+    subItems: [
+      { name: "Leads", path: "/crm/leads", pro: false },
+      { name: "Opportunities", path: "/crm/opportunities", pro: false },
+      { name: "Contacts", path: "/crm/contacts", pro: false },
+    ],
+  },
+  {
+    icon: <BrainIcon />,
+    name: "AI",
+    path: "/ai",
+  },
+];
+
 // Function to get menu items based on current app
 export const getMenuItems = (currentApp: string | null): { navItems: NavItem[], othersItems: NavItem[] } => {
   switch (currentApp) {
@@ -324,6 +472,8 @@ export const getMenuItems = (currentApp: string | null): { navItems: NavItem[], 
       return { navItems: hrMenuItems, othersItems: [] };
     case 'utils':
       return { navItems: utilsMenuItems, othersItems: utilsOthersItems };
+    case 'insights':
+      return { navItems: insightsMenuItems, othersItems: insightsOthersItems };
     default:
       return { navItems: defaultMenuItems, othersItems: defaultOthersItems };
   }
