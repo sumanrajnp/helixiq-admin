@@ -51,6 +51,13 @@ import HorizontaLDots from "./horizontal-dots.svg";
 import ChatIcon from "./chat.svg";
 import MoreDotIcon from "./more-dot.svg";
 import BellIcon from "./bell.svg";
+import AppsIcon from "./apps.svg";
+import InventoryIcon from "./inventory.svg";
+import HRIcon from "./hr.svg";
+import AccountingIcon from "./accounting.svg";
+import SalesIcon from "./sales.svg";
+import CRMIcon from "./crm.svg";
+import AdminIcon from "./admin.svg";
 
 export {
   DownloadIcon,
@@ -106,4 +113,11 @@ export {
   HorizontaLDots,
   ChevronUpIcon,
   ChatIcon,
+  AppsIcon,
+  InventoryIcon,
+  HRIcon,
+  AccountingIcon,
+  SalesIcon,
+  CRMIcon,
+  AdminIcon,
 };

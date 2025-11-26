@@ -18,6 +18,7 @@ import {
   UserCircleIcon,
 } from "../icons/index";
 import SidebarWidget from "./SidebarWidget";
+import AppSwitcher from "../components/common/AppSwitcher";
 
 type NavItem = {
   name: string;
@@ -307,38 +308,48 @@ const AppSidebar: React.FC = () => {
       onMouseEnter={() => !isExpanded && setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div
-        className={`py-8 flex  ${
-          !isExpanded && !isHovered ? "lg:justify-center" : "justify-start"
-        }`}
-      >
-        <Link href="/">
-          {isExpanded || isHovered || isMobileOpen ? (
-            <>
-              <Image
-                className="dark:hidden"
-                src="/images/logo/logo.svg"
-                alt="Logo"
-                width={150}
-                height={40}
-              />
-              <Image
-                className="hidden dark:block"
-                src="/images/logo/logo-dark.svg"
-                alt="Logo"
-                width={150}
-                height={40}
-              />
-            </>
-          ) : (
-            <Image
-              src="/images/logo/logo-icon.svg"
-              alt="Logo"
-              width={32}
-              height={32}
+      <div className="py-4 px-2">
+        <div className="flex items-start gap-2">
+          {/* App Switcher */}
+          <div className="flex-shrink-0 mt-1">
+            <AppSwitcher 
+              isExpanded={isExpanded} 
+              isHovered={isHovered} 
+              isMobileOpen={isMobileOpen} 
             />
-          )}
-        </Link>
+          </div>
+          
+          {/* Logo */}
+          <div className="flex-1 mt-2 ml-1">
+            <Link href="/">
+              {isExpanded || isHovered || isMobileOpen ? (
+                <>
+                  <Image
+                    className="dark:hidden"
+                    src="/images/logo/logo.svg"
+                    alt="Logo"
+                    width={120}
+                    height={32}
+                  />
+                  <Image
+                    className="hidden dark:block"
+                    src="/images/logo/logo-dark.svg"
+                    alt="Logo"
+                    width={120}
+                    height={32}
+                  />
+                </>
+              ) : (
+                <Image
+                  src="/images/logo/logo-icon.svg"
+                  alt="Logo"
+                  width={32}
+                  height={32}
+                />
+              )}
+            </Link>
+          </div>
+        </div>
       </div>
       <div className="flex flex-col overflow-y-auto duration-300 ease-linear no-scrollbar">
         <nav className="mb-6">
