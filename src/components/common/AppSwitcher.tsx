@@ -12,7 +12,9 @@ import {
   CRMIcon, 
   AdminIcon,
   ChevronDownIcon,
-  BoxCubeIcon 
+  BoxCubeIcon,
+  BrainIcon,
+  PieChartIcon 
 } from "@/icons";
 
 interface App {
@@ -110,6 +112,34 @@ const apps: App[] = [
       { name: "Contacts", path: "/crm/contacts" },
       { name: "Pipeline", path: "/crm/pipeline" },
       { name: "Activities", path: "/crm/activities" },
+    ],
+  },
+  {
+    id: "insights",
+    name: "Insights",
+    icon: <PieChartIcon />,
+    description: "Business analytics and dashboards",
+    color: "bg-pink-500",
+    path: "/insights",
+    features: [
+      { name: "E-commerce Dashboard", path: "/insights/ecommerce" },
+      { name: "Default Dashboard", path: "/insights/default" },
+      { name: "Analytics", path: "/insights/analytics" },
+      { name: "Reports", path: "/insights/reports" },
+    ],
+  },
+  {
+    id: "ai",
+    name: "AI",
+    icon: <BrainIcon />,
+    description: "Artificial intelligence and automation",
+    color: "bg-gradient-to-r from-purple-500 to-pink-500",
+    path: "/ai",
+    features: [
+      { name: "AI Assistant", path: "/ai/assistant" },
+      { name: "Automation", path: "/ai/automation" },
+      { name: "Predictions", path: "/ai/predictions" },
+      { name: "ML Models", path: "/ai/models" },
     ],
   },
 ];

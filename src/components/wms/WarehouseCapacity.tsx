@@ -38,6 +38,7 @@ const WarehouseCapacity: React.FC = () => {
         options: {
           chart: {
             width: 380,
+            height: 200,
           },
         },
       },
