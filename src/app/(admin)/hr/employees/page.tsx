@@ -4,7 +4,7 @@ import ComponentCard from "@/components/common/ComponentCard";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "Employee Management | HR - TailAdmin",
+  title: "Employee Management | HR - HelixIQ",
   description: "Employee management page for HR system",
 };
 

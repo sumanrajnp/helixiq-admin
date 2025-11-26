@@ -4,7 +4,7 @@ import ComponentCard from "@/components/common/ComponentCard";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "Invoicing | Accounting - TailAdmin",
+  title: "Invoicing | Accounting - HelixIQ",
   description: "Invoice management page for accounting system",
 };
 

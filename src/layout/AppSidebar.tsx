@@ -5,103 +5,40 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useSidebar } from "../context/SidebarContext";
 import {
-  BoxCubeIcon,
-  CalenderIcon,
   ChevronDownIcon,
-  GridIcon,
   HorizontaLDots,
-  ListIcon,
-  PageIcon,
-  PieChartIcon,
-  PlugInIcon,
-  TableIcon,
-  UserCircleIcon,
 } from "../icons/index";
 import SidebarWidget from "./SidebarWidget";
 import AppSwitcher from "../components/common/AppSwitcher";
+import { getMenuItems, type NavItem } from "../config/appMenus";
 
-type NavItem = {
-  name: string;
-  icon: React.ReactNode;
-  path?: string;
-  subItems?: { name: string; path: string; pro?: boolean; new?: boolean }[];
-};
 
-const navItems: NavItem[] = [
-  {
-    icon: <GridIcon />,
-    name: "Dashboard",
-    subItems: [
-      { name: "Ecommerce", path: "/", pro: false },
-      { name: "WMS", path: "/wms", pro: false },
-    ],
-  },
- 
-];
-
-const othersItems: NavItem[] = [
-   {
-    icon: <CalenderIcon />,
-    name: "Calendar",
-    path: "/calendar",
-  },
-  {
-    icon: <UserCircleIcon />,
-    name: "User Profile",
-    path: "/profile",
-  },
-
-  {
-    name: "Forms",
-    icon: <ListIcon />,
-    subItems: [{ name: "Form Elements", path: "/form-elements", pro: false }],
-  },
-  {
-    name: "Tables",
-    icon: <TableIcon />,
-    subItems: [{ name: "Basic Tables", path: "/basic-tables", pro: false }],
-  },
-  {
-    name: "Pages",
-    icon: <PageIcon />,
-    subItems: [
-      { name: "Blank Page", path: "/blank", pro: false },
-      { name: "404 Error", path: "/error-404", pro: false },
-    ],
-  },
-  {
-    icon: <PieChartIcon />,
-    name: "Charts",
-    subItems: [
-      { name: "Line Chart", path: "/line-chart", pro: false },
-      { name: "Bar Chart", path: "/bar-chart", pro: false },
-    ],
-  },
-  {
-    icon: <BoxCubeIcon />,
-    name: "UI Elements",
-    subItems: [
-      { name: "Alerts", path: "/alerts", pro: false },
-      { name: "Avatar", path: "/avatars", pro: false },
-      { name: "Badge", path: "/badge", pro: false },
-      { name: "Buttons", path: "/buttons", pro: false },
-      { name: "Images", path: "/images", pro: false },
-      { name: "Videos", path: "/videos", pro: false },
-    ],
-  },
-  {
-    icon: <PlugInIcon />,
-    name: "Authentication",
-    subItems: [
-      { name: "Sign In", path: "/signin", pro: false },
-      { name: "Sign Up", path: "/signup", pro: false },
-    ],
-  },
-];
 
 const AppSidebar: React.FC = () => {
-  const { isExpanded, isMobileOpen, isHovered, setIsHovered } = useSidebar();
+  const { isExpanded, isMobileOpen, isHovered, setIsHovered, currentApp, setCurrentApp } = useSidebar();
   const pathname = usePathname();
+  
+  // Auto-detect current app from URL
+  useEffect(() => {
+    if (pathname.startsWith('/inventory')) {
+      setCurrentApp('inventory');
+    } else if (pathname.startsWith('/warehouse')) {
+      setCurrentApp('warehouse');
+    } else if (pathname.startsWith('/hr')) {
+      setCurrentApp('hr');
+    } else if (pathname.startsWith('/accounting')) {
+      setCurrentApp('accounting');
+    } else if (pathname.startsWith('/sales')) {
+      setCurrentApp('sales');
+    } else if (pathname.startsWith('/crm')) {
+      setCurrentApp('crm');
+    } else if (pathname === '/' || pathname.startsWith('/wms') || pathname.startsWith('/calendar') || pathname.startsWith('/profile') || pathname.startsWith('/form-') || pathname.startsWith('/basic-') || pathname.startsWith('/blank') || pathname.startsWith('/error-') || pathname.startsWith('/line-') || pathname.startsWith('/bar-') || pathname.startsWith('/alerts') || pathname.startsWith('/avatars') || pathname.startsWith('/badge') || pathname.startsWith('/buttons') || pathname.startsWith('/images') || pathname.startsWith('/videos') || pathname.startsWith('/signin') || pathname.startsWith('/signup')) {
+      setCurrentApp(null);
+    }
+  }, [pathname, setCurrentApp]);
+  
+  // Get dynamic menu items based on current app
+  const { navItems, othersItems } = getMenuItems(currentApp);
 
   const renderMenuItems = (
     navItems: NavItem[],
@@ -326,14 +263,14 @@ const AppSidebar: React.FC = () => {
                 <>
                   <Image
                     className="dark:hidden"
-                    src="/images/logo/logo.svg"
+                    src="/images/logo/helixiq.svg"
                     alt="Logo"
                     width={120}
                     height={32}
                   />
                   <Image
                     className="hidden dark:block"
-                    src="/images/logo/logo-dark.svg"
+                    src="/images/logo/helixiq-d.svg"
                     alt="Logo"
                     width={120}
                     height={32}
@@ -354,6 +291,18 @@ const AppSidebar: React.FC = () => {
       <div className="flex flex-col overflow-y-auto duration-300 ease-linear no-scrollbar">
         <nav className="mb-6">
           <div className="flex flex-col gap-4">
+            {/* Back to Apps button when in app-specific mode */}
+            {currentApp && (isExpanded || isHovered || isMobileOpen) && (
+              <div className="px-4">
+                <button
+                  onClick={() => setCurrentApp(null)}
+                  className="flex items-center gap-2 text-sm text-gray-500 hover:text-brand-500 dark:text-gray-400 dark:hover:text-brand-400 transition-colors"
+                >
+                  ← Back to Apps
+                </button>
+              </div>
+            )}
+            
             <div>
               <h2
                 className={`mb-4 text-xs uppercase flex leading-[20px] text-gray-400 ${
@@ -363,7 +312,7 @@ const AppSidebar: React.FC = () => {
                 }`}
               >
                 {isExpanded || isHovered || isMobileOpen ? (
-                  "Menu"
+                  currentApp ? currentApp.charAt(0).toUpperCase() + currentApp.slice(1) : "Menu"
                 ) : (
                   <HorizontaLDots />
                 )}
@@ -371,22 +320,24 @@ const AppSidebar: React.FC = () => {
               {renderMenuItems(navItems, "main")}
             </div>
 
-            <div className="">
-              <h2
-                className={`mb-4 text-xs uppercase flex leading-[20px] text-gray-400 ${
-                  !isExpanded && !isHovered
-                    ? "lg:justify-center"
-                    : "justify-start"
-                }`}
-              >
-                {isExpanded || isHovered || isMobileOpen ? (
-                  "Others"
-                ) : (
-                  <HorizontaLDots />
-                )}
-              </h2>
-              {renderMenuItems(othersItems, "others")}
-            </div>
+            {othersItems.length > 0 && (
+              <div className="">
+                <h2
+                  className={`mb-4 text-xs uppercase flex leading-[20px] text-gray-400 ${
+                    !isExpanded && !isHovered
+                      ? "lg:justify-center"
+                      : "justify-start"
+                  }`}
+                >
+                  {isExpanded || isHovered || isMobileOpen ? (
+                    currentApp === 'warehouse' ? "Barcode & RFID" : "Others"
+                  ) : (
+                    <HorizontaLDots />
+                  )}
+                </h2>
+                {renderMenuItems(othersItems, "others")}
+              </div>
+            )}
           </div>
         </nav>
         {isExpanded || isHovered || isMobileOpen ? <SidebarWidget /> : null}

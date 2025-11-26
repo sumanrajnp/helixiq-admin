@@ -8,8 +8,8 @@ import React from "react";
 
 export const metadata: Metadata = {
   title:
-    "WMS Dashboard | TailAdmin - Next.js Warehouse Management System",
-  description: "Warehouse Management System Dashboard for TailAdmin Template",
+    "WMS Dashboard | HelixIQ - Next.js Warehouse Management System",
+  description: "Warehouse Management System Dashboard for HelixIQ Template",
 };
 
 export default function WMSDashboard() {

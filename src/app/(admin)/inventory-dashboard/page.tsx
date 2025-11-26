@@ -14,7 +14,7 @@ import {
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "Inventory Management Dashboard | TailAdmin",
+  title: "Inventory Management Dashboard | HelixIQ",
   description: "Comprehensive inventory management system dashboard",
 };
 

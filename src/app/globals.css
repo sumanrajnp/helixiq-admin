@@ -738,3 +738,11 @@ span.flatpickr-weekday,
   opacity: 0.8;
   cursor: grabbing; /* Changes the cursor to indicate dragging */
 }
+
+.menu-dropdown-item-active, .menu-item-active{
+  background-color: #1B3360 !important;
+  color: #fff !important;
+}
+.menu-item-icon-active{
+   color: #fff !important;
+}

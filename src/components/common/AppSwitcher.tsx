@@ -1,6 +1,8 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useSidebar } from "@/context/SidebarContext";
 import { 
   AppsIcon, 
   InventoryIcon, 
@@ -122,6 +124,8 @@ export default function AppSwitcher({ isExpanded, isHovered, isMobileOpen }: App
   const [isOpen, setIsOpen] = useState(false);
   const [selectedApp, setSelectedApp] = useState<App | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
+  const { setCurrentApp } = useSidebar();
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -139,8 +143,9 @@ export default function AppSwitcher({ isExpanded, isHovered, isMobileOpen }: App
 
   const handleAppClick = (app: App) => {
     if (app.path) {
-      // Direct navigation for apps with path
-      window.location.href = app.path;
+      // Set current app in context and navigate
+      setCurrentApp(app.id);
+      router.push(app.path);
       setIsOpen(false);
     } else if (selectedApp?.id === app.id) {
       setSelectedApp(null);
