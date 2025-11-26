@@ -26,8 +26,8 @@ export default function InsightsPage() {
     },
     {
       id: "default" as const,
-      name: "Default Dashboard",
-      description: "General business overview and key performance indicators",
+      name: "Warehouse Dashboard",
+      description: "Warehouse management system overview and operational metrics",
       path: "/insights/default",
       color: "bg-green-500",
       features: [

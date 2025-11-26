@@ -1,28 +1,29 @@
+"use client";
 import type { Metadata } from "next";
-import { EcommerceMetrics } from "@/components/ecommerce/EcommerceMetrics";
-import MonthlySalesChart from "@/components/ecommerce/MonthlySalesChart";
-import StatisticsChart from "@/components/ecommerce/StatisticsChart";
-import RecentOrders from "@/components/ecommerce/RecentOrders";
-import CountryMap from "@/components/ecommerce/CountryMap";
-import MonthlyTarget from "@/components/ecommerce/MonthlyTarget";
-import DemographicCard from "@/components/ecommerce/DemographicCard";
+import { WMSMetrics } from "@/components/wms/WMSMetrics";
+import InventoryChart from "@/components/wms/InventoryChart";
+import WarehouseCapacity from "@/components/wms/WarehouseCapacity";
+import RecentShipments from "@/components/wms/RecentShipments";
+import TopProducts from "@/components/wms/TopProducts";
+import { UserIcon, BrainIcon } from "@/icons";
+import React, { useState } from "react";
 
 export const metadata: Metadata = {
-  title: "Default Dashboard Insights | Admin Panel",
-  description: "Default dashboard with general business overview and KPIs",
+  title: "Warehouse Dashboard Insights | Admin Panel",
+  description: "Warehouse management dashboard with operational metrics and KPIs",
 };
 
-export default function DefaultInsightsPage() {
+export default function WarehouseInsightsPage() {
   return (
     <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-            Default Dashboard Insights
+            Warehouse Dashboard Insights
           </h1>
           <p className="text-gray-500 dark:text-gray-400">
-            General business overview and key performance indicators
+            Warehouse management system overview and operational metrics
           </p>
         </div>
         
@@ -34,38 +35,29 @@ export default function DefaultInsightsPage() {
         </div>
       </div>
 
-      {/* Dashboard Content - Same as the main admin page */}
+      {/* Dashboard Content - WMS Dashboard */}
       <div className="grid grid-cols-12 gap-4 md:gap-6">
         {/* Metrics Row */}
         <div className="col-span-12">
-          <EcommerceMetrics />
+          <WMSMetrics />
         </div>
 
         {/* Charts Row */}
         <div className="col-span-12 space-y-6 xl:col-span-8">
-          <MonthlySalesChart />
+          <InventoryChart />
         </div>
 
         <div className="col-span-12 xl:col-span-4">
-          <StatisticsChart />
+          <WarehouseCapacity />
         </div>
 
-        {/* Orders and Map Row */}
-        <div className="col-span-12 xl:col-span-7">
-          <RecentOrders />
-        </div>
-
+        {/* Products and Shipments Row */}
         <div className="col-span-12 xl:col-span-5">
-          <CountryMap />
+          <TopProducts />
         </div>
 
-        {/* Target and Demographics Row */}
-        <div className="col-span-12 xl:col-span-4">
-          <MonthlyTarget />
-        </div>
-
-        <div className="col-span-12 xl:col-span-8">
-          <DemographicCard />
+        <div className="col-span-12 xl:col-span-7">
+          <RecentShipments />
         </div>
       </div>
     </div>

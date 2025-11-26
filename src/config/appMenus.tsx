@@ -36,8 +36,8 @@ export const defaultMenuItems: NavItem[] = [
     icon: <GridIcon />,
     name: "Dashboard",
     subItems: [
-      { name: "Ecommerce", path: "/", pro: false },
-      { name: "Warehouse Insights", path: "/wms", pro: false },
+      { name: "Warehouse Insights", path: "/", pro: false },
+      { name: "Ecommerce", path: "/ecom", pro: false },
     ],
   },
 ];
@@ -392,8 +392,8 @@ export const insightsMenuItems: NavItem[] = [
     icon: <GridIcon />,
     name: "Dashboard",
     subItems: [
-      { name: "Ecommerce", path: "/", pro: false },
-      { name: "Warehouse Insights", path: "/wms", pro: false },
+      { name: "Warehouse Insights", path: "/", pro: false },
+      { name: "Ecommerce", path: "/ecom", pro: false },
     ],
   },
 ];
