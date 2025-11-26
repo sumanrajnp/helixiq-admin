@@ -15,7 +15,9 @@ import {
   BoxCubeIcon,
   BrainIcon,
   PieChartIcon,
-  PlugInIcon 
+  PlugInIcon,
+  BoxIcon,
+  GridIcon 
 } from "@/icons";
 
 interface App {
@@ -32,7 +34,7 @@ const apps: App[] = [
   {
     id: "inventory",
     name: "Inventory",
-    icon: <InventoryIcon />,
+    icon: <GridIcon />,
     description: "Manage stock and warehouse operations",
     color: "bg-blue-500",
     path: "/inventory-dashboard",
@@ -40,7 +42,7 @@ const apps: App[] = [
   {
     id: "warehouse",
     name: "Warehouse",
-    icon: <BoxCubeIcon />,
+    icon: <BoxIcon />,
     description: "Warehouse operations and management",
     color: "bg-teal-500",
     path: "/warehouse-dashboard",
