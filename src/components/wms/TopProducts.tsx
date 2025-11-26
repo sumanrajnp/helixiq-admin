@@ -20,7 +20,7 @@ const productData: Product[] = [
     category: "Electronics",
     stock: 245,
     reserved: 12,
-    image: "/images/product/product-01.png",
+    image: "/images/product/product-01.jpg",
     status: "In Stock",
   },
   {
@@ -30,7 +30,7 @@ const productData: Product[] = [
     category: "Electronics",
     stock: 89,
     reserved: 8,
-    image: "/images/product/product-02.png",
+    image: "/images/product/product-02.jpg",
     status: "In Stock",
   },
   {
@@ -40,7 +40,7 @@ const productData: Product[] = [
     category: "Electronics",
     stock: 15,
     reserved: 5,
-    image: "/images/product/product-03.png",
+    image: "/images/product/product-03.jpg",
     status: "Low Stock",
   },
   {
@@ -50,7 +50,7 @@ const productData: Product[] = [
     category: "Accessories",
     stock: 0,
     reserved: 0,
-    image: "/images/product/product-04.png",
+    image: "/images/product/product-04.jpg",
     status: "Out of Stock",
   },
   {
@@ -60,7 +60,7 @@ const productData: Product[] = [
     category: "Accessories",
     stock: 156,
     reserved: 23,
-    image: "/images/product/product-01.png",
+    image: "/images/product/product-05.jpg",
     status: "In Stock",
   },
 ];
