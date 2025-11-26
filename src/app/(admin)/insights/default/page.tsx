@@ -1,4 +1,3 @@
-"use client";
 import type { Metadata } from "next";
 import { WMSMetrics } from "@/components/wms/WMSMetrics";
 import InventoryChart from "@/components/wms/InventoryChart";
@@ -6,7 +5,6 @@ import WarehouseCapacity from "@/components/wms/WarehouseCapacity";
 import RecentShipments from "@/components/wms/RecentShipments";
 import TopProducts from "@/components/wms/TopProducts";
 import { UserIcon, BrainIcon } from "@/icons";
-import React, { useState } from "react";
 
 export const metadata: Metadata = {
   title: "Warehouse Dashboard Insights | Admin Panel",
