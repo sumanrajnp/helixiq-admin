@@ -35,7 +35,11 @@ const navItems: NavItem[] = [
       { name: "WMS", path: "/wms", pro: false },
     ],
   },
-  {
+ 
+];
+
+const othersItems: NavItem[] = [
+   {
     icon: <CalenderIcon />,
     name: "Calendar",
     path: "/calendar",
@@ -64,9 +68,6 @@ const navItems: NavItem[] = [
       { name: "404 Error", path: "/error-404", pro: false },
     ],
   },
-];
-
-const othersItems: NavItem[] = [
   {
     icon: <PieChartIcon />,
     name: "Charts",
